@@ -1,16 +1,20 @@
-# Fast Edit-Build-Test Cycle for Deploying Lambda Functions on AWS
-
-
-This project consists of two key components.
-1. Docker environment mimicing AWS Lambda environment.
-2. Packaging script to build AWS Lambda ready packages from Python 3.6 modules.
+# Python 3.6 Package Creator for AWS Lambda
 
 ## Quick start
+`docker run --rm -v $(pwd):/package w3d/lambda MYPACKAGE`
 
+for example
 
-## Precompiled binaries
-Some precompiled binaries that can be imported into AWS Lambda can be found below
+`docker run --rm -v $(pwd):/package w3d/lambda numpy`
 
+Result is a `pythonpackage.zip` that can be added as a Lambda Layer or extracted into your existing Lambda deployment package.
+
+---
+
+### This project consists of two key components
+1. Docker environment mimicing AWS Lambda environment. If you are looking for an advanced Lambda environment copy look at
+ https://github.com/lambci/docker-lambda
+2. Packaging script to build AWS Lambda ready packages from Python 3.6 modules.
 
 ## Dockerfile for Lambda environment
 ```
@@ -24,31 +28,22 @@ RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install boto3
 RUN yum -y install gcc g++ gcc gcc-c++ cmake
 RUN yum -y install python36*
+
+ADD package.sh /
+ENTRYPOINT ["/package.sh"]
 ```
 
-#### Build the container
+#### Build your own Docker image for finer control
 ```
-docker build -t w3d/lambda .
-```
-
-## Build a lambda package
-```
-docker run --rm -v $(pwd):/package -t w3d/lambda bash /package/package.sh numpy
-```
-For example building dlib that is executable in AWS Lambda environment run
-```
-docker run --rm -v $(pwd):/package -t w3d/lambda bash /package/package.sh dlib
+docker build -t my-lambda .
 ```
 
-`--rm` - prevents Docker from saving the container's disk state to host
-
-`-v $(pwd)/packages:/packages` - mount current directory as volume into `/packages` inside Docker container
-
-`bash /packages/package.sh` - run `package.sh` inside the Docker container
-
-#### List of dependencies that can be built for AWS Lambda with the default Docker container:
+#### Confirmed list of dependencies that can successfully be built for AWS Lambda with the Dockerfile provided
 ```
 numpy
 dlib
+sklearn
+requests
+flask
+bpy_lambda
 ```
-Dockerfile for the environment is provided and more dependencies can be added to the build environment. 
