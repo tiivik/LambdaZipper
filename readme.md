@@ -1,13 +1,13 @@
 # Python 3.6 Package Creator for AWS Lambda
 
 ## Quick start
-`docker run --rm -v $(pwd):/package w3d/lambda MYPACKAGE`
+`docker run --rm -v $(pwd):/package tiivik/lambdazipper MYPACKAGE`
 
 for example
 
-`docker run --rm -v $(pwd):/package w3d/lambda numpy`
+`docker run --rm -v $(pwd):/package tiivik/lambdazipper numpy`
 
-Result is a `pythonpackage.zip` that can be added as a Lambda Layer or extracted into your existing Lambda deployment package.
+Result is a `packagename.zip` that can be added as a Lambda Layer or extracted into your existing Lambda deployment package.
 
 ---
 
