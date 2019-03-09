@@ -7,11 +7,13 @@
 
 `docker run --rm -v $(pwd):/package tiivik/lambdazipper numpy`
 
-Result is `numpy.zip` that can be added as a Lambda Layer or extracted into your existing Lambda deployment package.
+Result is `numpy.zip` that can be added as a [Lambda Layer](https://aws.amazon.com/blogs/aws/new-for-aws-lambda-use-any-programming-language-and-share-common-components/) or extracted into your existing Lambda deployment package.
+
+
 
 ---
 ### Confirmed Python 3.6 dependencies
-Confirmed list of Python 3.6 dependencies that can successfully be built for AWS Lambda with the Dockerfile provided
+Confirmed list of Python 3.6 dependencies that can successfully be built for AWS Lambda with the [Dockerfile](Dockerfile) provided
 ```
 numpy
 dlib
@@ -22,8 +24,7 @@ bpy_lambda
 ```
 
 ### This project consists of two key components
-1. Docker environment mimicing AWS Lambda environment. If you are looking for an advanced Lambda environment copy look at
- https://github.com/lambci/docker-lambda
+1. Docker environment mimicing AWS Lambda environment. If you are looking for an advanced Lambda environment replication, take a look at [lambci/docker-lambda](https://github.com/lambci/docker-lambda).
 2. Packaging script to build AWS Lambda ready packages from Python 3.6 modules.
 
 ## Dockerfile for Lambda environment
