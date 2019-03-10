@@ -15,6 +15,7 @@ Result is `numpy.zip` that can be added as a [Lambda Layer](https://aws.amazon.c
 ### Confirmed Python 3.6 dependencies
 Confirmed list of Python 3.6 dependencies that can successfully be built for AWS Lambda with the [Dockerfile](Dockerfile) provided
 ```
+opencv-python
 numpy
 dlib
 sklearn
