@@ -1,5 +1,7 @@
 # Python 3.6 Package Creator for AWS Lambda
 
+<a href="https://www.buymeacoffee.com/NscyVhWZG">Buy me a coffee!![Buy me a coffee!](https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg)</a>
+
 ## Quick start
 `docker run --rm -v $(pwd):/package tiivik/lambdazipper MYPACKAGE`
 
