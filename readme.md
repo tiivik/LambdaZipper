@@ -19,6 +19,7 @@ Confirmed list of Python 3.6 dependencies that can successfully be built for AWS
 ```
 opencv-python
 numpy
+Pillow
 dlib
 sklearn
 requests
